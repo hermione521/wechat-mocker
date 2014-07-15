@@ -1,0 +1,28 @@
+{
+	"name": "wechat-mocker",
+	"version": "0.0.1",
+	"description": "微信本地测试平台",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/hermione521/wechat-mocker.git"
+	},
+	"author": {
+		"name": "Hermione521",
+		"email": "hermione0521@gmail.com",
+		"url": "https://github.com/hermione521"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"express": "4.x",
+		"body-parser": "*",
+		"compression": "*",
+		"cookie-parser": "*",
+		"serve-static": "*",
+		"request": "*",
+		"sha1": "*",
+		"crypto": "*",
+		"xml2js": "*",
+		"url": "*",
+		"querystring": "*"
+	}
+}

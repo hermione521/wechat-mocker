@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Wechat Mocker - 微信本地测试平台</title>
+		<link rel="stylesheet" type="text/css" href="http://mp.weixin.qq.com/debug/zh_CN/htmledition/style/base/base1d7fc0.css"/>
+		<link rel="stylesheet" type="text/css" href="http://mp.weixin.qq.com/debug/zh_CN/htmledition/style/base/lib1d7ebd.css"/>
+		<link rel="stylesheet" href="http://mp.weixin.qq.com/debug/zh_CN/htmledition/style/sandbox/base.css">
+		<link rel="stylesheet" href="http://mp.weixin.qq.com/debug/zh_CN/htmledition/style/page/page_index1d7ebd.css">
+	</head>
+
+	<body>
+
+	<div class="info_box" id="interfaceConfigForm" style="width: 798px; margin-top: 50px; position: absolute; top: 50px; left: 0; right: 0; margin: auto;">
+		<div class="info_box_hd">
+			<h4>接口配置信息</h4>
+		</div>
+		<div class="info_box_bd">
+			<form action="" class="form dev_info" id="interfaceConfig">
+				<div class="frm_desc">
+					请填写接口配置信息，此信息需要你有自己的服务器资源，填写的URL需要正确响应 Wechat Mocker 发送的Token验证，请阅读
+					<a href="http://mp.weixin.qq.com/wiki/index.php?title=%E6%B6%88%E6%81%AF%E6%8E%A5%E5%8F%A3%E6%8C%87%E5%8D%97" target="_blank">消息接口使用指南</a>。
+					<br />
+					请填写本地服务器URL，例如 http://localhost:18080/weixin，同时请确认你自己的服务器连接到 Wechat Mocker 而不是微信。
+				</div>
+				<div class="frm_control_group">
+					<label for="" class="frm_label">URL</label>
+					<div class="frm_controls">
+						<span class="frm_input_box">
+							<input type="text" class="frm_input" id="url" name="url" value="">
+						</span>
+						<p class="frm_tips"></p>
+					</div>
+				</div>
+				<div class="frm_control_group">
+					<label for="" class="frm_label">Token</label>
+					<div class="frm_controls">
+						<span class="frm_input_box">
+							<input type="text" class="frm_input" id="token" name="token" value="">
+						</span>
+						<p class="frm_tips"></p>
+					</div>
+				</div>
+				<div class="tool_bar">
+					<input class="btn btn_primary" type="submit" id="submit" value="提交">
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/sandbox/js/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$.get("/weixin/serverInfo", function (result) {
+				$("#url").attr("value", result.url);
+				$("#token").attr("value", result.token);
+			});
+		});
+		$("#submit").click(function (event) {
+			event.preventDefault();
+			var url = $("#url").val();
+			var token = $("#token").val();
+			$.ajax({
+				type: "POST",
+				url: "/weixin/access",
+				data: {
+					url: url,
+					token: token
+				}
+			}).done(function () {
+				alert("配置成功 :-)");
+			}).fail(function () {
+				alert("配置失败 :-(");
+			});
+		});
+	</script>
+	
+	</body>
+
+</html>

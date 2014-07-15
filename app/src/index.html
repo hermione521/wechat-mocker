@@ -1,0 +1,168 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Wechat Mocker - 微信本地测试平台</title>
+		<!-- <link charset="utf-8" rel="stylesheet" href="http://rescdn.qqmail.com/bizmp/zh_CN/style/dev_message1ea92b.css"> -->
+		<link type="text/css" rel="stylesheet/less" href="/sandbox/less/main.less"/>
+		<link type="text/css" rel="stylesheet/less" href="/sandbox/less/my.less"/>
+		<script type="text/javascript" src="/sandbox/js/less-133.js"></script>
+	</head>
+
+	<body>
+
+	<div class="mc_content">
+		<div class="custom_menu_preview_wrap">
+			<div class="custom_menu_preview_menu">
+
+				<div class="custom_menu_preview_content js_menu_preview">
+
+					<script id="text-template" type="text/x-handlebars-template">
+					<div>
+					<div class="mc_content_item item_left">
+						<div class="mc_content_wrap clearfix">
+							<div class="mc_avatar_wrap">
+								<img src="/sandbox/image/avatar.jpg" class="border_alpha"><span class="image_vertical"></span>
+							</div>
+							<div class="mc_text_wrap">
+								<div class="mc_text_middle">
+									<div class="mc_text_inner">
+										<span class="mc_arrow"><span class="mc_arrow_wrap"></span><span class="mc_arrow_middle"></span><span class="mc_arrow_inner"></span></span>
+										<div class="mc_detail">{{content}}</div><span class="mc_vertical"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+					</script>
+
+					<script id="oneNews-template" type="text/x-handlebars-template">
+					<div>
+					<div class="mc_content_item item_left item_graphic">
+						<div class="mc_content_wrap clearfix">
+							<div class="mc_avatar_wrap">
+								<img src="/sandbox/image/avatar.jpg" class="border_alpha">
+							</div>
+							<div class="video_unit" href="" target="_blank">
+				
+								<p class="video_title">{{Title}}</p>
+								
+								{{#if PicUrl}}
+								<div class="video_image">
+									<div class="video_image_wrap">
+										<img src="{{PicUrl}}">
+									</div>
+								</div>
+								{{/if}}
+								
+								<p class="video_detail">{{Description}}</p>
+								<a class="video_more" href="{{Url}}" target="_blank">查看详细</a>
+				
+							</div>
+						</div>
+					</div>
+					</div>
+					</script>
+
+					<script id="manyNews-template" type="text/x-handlebars-template">
+					<div>
+					<div class="mc_content_item item_left item_graphic">
+						<div class="mc_content_wrap clearfix">
+							<div class="mc_avatar_wrap">
+								<img src="/sandbox/image/avatar.jpg" class="border_alpha">
+							</div>
+
+							<div class="video_unit" href="/cgi-bin/show?agentuin=1034000007&amp;fileid=10000002&amp;offset=0" target="_blank">
+								
+							{{#each items}}
+
+								{{#if @first}}
+								<a class="video_image" href="{{this.Url}}" target="_blank">
+									
+									{{#if this.PicUrl}}
+									<div class="video_image_wrap">
+										<img src="{{this.PicUrl}}">
+									</div>
+									{{/if}}
+									{{#unless this.PicUrl}}
+									<div class="video_image_wrap">
+										<img src="/sandbox/image/white.png">
+									</div>
+									{{/unless}}
+									
+									<p class="video_sub_title">{{this.Title}}</p>
+								</a>
+								{{/if}}
+
+								{{#unless @first}}
+								<a class="video_artical" href="{{this.Url}}" target="_blank">
+									
+									{{#if this.PicUrl}}
+									<img src="{{this.PicUrl}}" class="video_artical_img">
+									{{/if}}
+									
+									<p class="video_artical_title">{{this.Title}}</p>
+									<span class="video_vertical"></span>
+								</a>
+								{{/unless}}
+
+							{{/each}}
+											
+							</div>
+						</div>
+					</div>
+					</div>
+					</script>
+
+				</div>
+
+				<div class="switch_button" onclick="return switchDiv('text')"></div>
+
+				<div  id="entry-template">
+
+				<div class="custom_menu_preview_bar js_menu_bar custom_menu_count{{button.length}}">
+
+					{{#each button}}
+					{{#if this.sub_button}}
+					<div class="custom_menu_preview_float_button_wrap js_sub_menu custom_menu_preview_float_button_{{this.indexOne}} hide">
+						{{#each this.sub_button}}
+						<a class="custom_menu_preview_float_button js_click_menu" data-id="{{this.key}}" onclick="return menuSubButton(this)">{{this.name}}</a>
+						{{/each}}
+						<span class="custom_menu_arrow">
+							<span class="custom_menu_down"></span>
+							<span class="custom_menu_up"></span>
+						</span>
+					</div>
+					{{/if}}
+					
+					<div class="custom_menu_preview_item" onclick="return menuMainButton(this)">
+						<div class="custom_menu_preview_button js_click_menu" data-id="{{this.key}}">
+							{{#if this.sub_button}}
+							<span class="icon icon_customMenu"></span>
+							{{/if}}
+							{{this.name}}
+						</div>
+					</div>
+					{{/each}}
+	
+				</div>
+
+				<div class="custom_menu_input_bar" style="display:none;">
+					<input class="custom_menu_input_area" id="input_content" required>
+					<div class="custom_menu_submit_button" onclick="return sendText()">
+						<span class="icon icon_sendMsg"></span>
+					</div>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/sandbox/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/sandbox/js/handlebars-v1.3.0.js"></script>
+	<script type="text/javascript" src="/sandbox/js/index.js"></script>
+	
+	</body>
+</html>
