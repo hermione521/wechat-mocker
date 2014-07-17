@@ -17,6 +17,8 @@ Feature request, pull request and bug report are welcomed.
 
 If Wechat-Mocker helps you, pls star me at [https://github.com/hermione521/wechat-mocker](https://github.com/hermione521/wechat-mocker)!
 
+如果 Wechat-Mocker 对你有所帮助，请加星！
+
 
 ## Server Part
 
