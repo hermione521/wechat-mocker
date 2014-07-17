@@ -15,6 +15,8 @@ Wechat-Mocker是一个微信本地测试平台，用于在本地脱离微信测�
 
 Feature request, pull request and bug report are welcomed.
 
+If Wechat-Mocker helps you, pls star me at [https://github.com/hermione521/wechat-mocker](https://github.com/hermione521/wechat-mocker)!
+
 
 ## Server Part
 
