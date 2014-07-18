@@ -109,8 +109,11 @@ output.deformatNews = function (msg, callback) {
 };
 
 output.deformatText = function (msg, callback) {
-	var articles = msg.Content;
-	callback(articles);
+	var text = msg.Content;
+	callback({
+		msgType: "text",
+		content: text
+	});
 };
 
 var deformatHandler = {
