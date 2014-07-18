@@ -1,4 +1,5 @@
 var express = require("express"),
+	logger = require('morgan'),
 	go = require('../globalObject'),
 	access = require('../util/access'),
 	menuRouter = require('./menuRouter'),
@@ -33,6 +34,7 @@ router.post('/access', function (req, res) {
 		else{
 			if (body === sig.echostr){
 				go.serverUrl = req.body.url;
+				go.configured = true;
 				res.send(200, "success");
 			}
 			else{

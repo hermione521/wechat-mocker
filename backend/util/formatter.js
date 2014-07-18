@@ -36,6 +36,20 @@ output.formatMenuClick = function (eventKey) {
 	return fmtText.join("");
 };
 
+output.formatBasicEvent = function (eventName) {
+	var timestamp = +new Date + "";
+	var fmtText = [
+		"<xml>",
+		"<ToUserName><![CDATA[", config.serverOpenid, "]]></ToUserName>",
+		"<FromUserName><![CDATA[", config.userOpenid, "]]></FromUserName>",
+		"<CreateTime>", timestamp, "</CreateTime>",
+		"<MsgType><![CDATA[event]]></MsgType>",
+		"<Event><![CDATA[", eventName, "]]></Event>",
+		"</xml>"
+	];
+	return fmtText.join("");
+};
+
 output.formatUrl = function (originalUrl) {
 	var urlObj = {
 		protocol: "http",
@@ -57,6 +71,7 @@ output.formatUrl = function (originalUrl) {
 output.deformatUrl = function (originalUrl) {
 	// original url
 	var url = querystring.parse(originalUrl).redirect_uri;
+	console.log(url);
 	url = querystring.unescape(url);
 	// parse url
 	var parsedUrl = urlMod.parse(url, true);

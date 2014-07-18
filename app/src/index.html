@@ -3,7 +3,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Wechat Mocker - 微信本地测试平台</title>
-		<!-- <link charset="utf-8" rel="stylesheet" href="http://rescdn.qqmail.com/bizmp/zh_CN/style/dev_message1ea92b.css"> -->
+		<link type="text/css" rel="stylesheet" href="/sandbox/less/login.css" />
 		<link type="text/css" rel="stylesheet/less" href="/sandbox/less/main.less"/>
 		<link type="text/css" rel="stylesheet/less" href="/sandbox/less/my.less"/>
 		<script type="text/javascript" src="/sandbox/js/less-133.js"></script>
@@ -11,7 +11,7 @@
 
 	<body>
 
-	<div class="mc_content">
+	<div class="mc_content" style="display:none;">
 		<div class="custom_menu_preview_wrap">
 			<div class="custom_menu_preview_menu">
 
@@ -155,6 +155,27 @@
 					</div>
 				</div>
 
+				<div class="unsubscribe_button" title="取消关注" onclick="return unsubscribe()">
+					<span class="icon icon_unsubscribe"></span>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="login_container">
+		<div class="main">
+			<div class="loginPanel normalPanel">
+				<div class="waiting panelContent">
+					<div class="info">
+						<div class="normlDesc loginTip pngBackground" style="position:relative;" onclick="return subscribe()">
+							<div class="loginTipL pngBackground"></div>
+							<div class="loginTipR pngBackground"></div>
+							<p class="button">点击关注</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

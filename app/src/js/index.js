@@ -81,16 +81,57 @@ function sendText(){
 	}
 }
 
+function subscribe(){
+	$.ajax({
+		url: "/user/subscribe",
+		error: function (data, textStatus, xhr) {
+			if (xhr === "Conflict"){
+				alert("重复关注！");
+				$("#login_container").hide();
+				$(".mc_content").attr("style", "display: inline;");
+			}
+			else{
+				alert("关注失败！" + data.responseText);
+			}
+		},
+		success: function (data, textStatus) {
+			$("#login_container").hide();
+			$(".mc_content").attr("style", "display: inline;");
+			putMsg(data);
+		}
+	});
+}
+
+function unsubscribe(){
+	$.ajax({
+		url: "/user/unsubscribe",
+		error: function (data, textStatus, xhr) {
+			if (xhr === "Conflict"){
+				alert("还未关注！");
+				$("#login_container").show();
+				$(".mc_content").attr("style", "display: none;");
+			}
+			else{
+				alert("取消关注失败！" + data.responseText);
+			}
+		},
+		success: function (data, textStatus, xhr) {
+			$("#login_container").show();
+			$(".mc_content").attr("style", "display: none;");
+		}
+	});
+}
+
 function switchDiv(type) {
 	switch (type){
 		case "text":
-			$(".custom_menu_input_bar").attr("style", "display:inline;");
-			$(".custom_menu_preview_bar").attr("style", "display:none;");
+			$(".custom_menu_input_bar").show();
+			$(".custom_menu_preview_bar").hide();
 			$(".switch_button").attr("onclick", "return switchDiv('menu')");
 			break;
 		case "menu":
-			$(".custom_menu_input_bar").attr("style", "display:none;");
-			$(".custom_menu_preview_bar").attr("style", "display:inline;");
+			$(".custom_menu_input_bar").hide();
+			$(".custom_menu_preview_bar").show();
 			$(".switch_button").attr("onclick", "return switchDiv('text')");
 			break;
 	}

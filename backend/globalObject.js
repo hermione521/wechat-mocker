@@ -9,4 +9,7 @@ go.oauth_access_token = "";
 
 go.menu = {};
 
+go.configured = false;
+go.subscribed = false;
+
 module.exports = go;

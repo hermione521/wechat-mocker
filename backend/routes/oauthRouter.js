@@ -1,4 +1,5 @@
 var express = require("express"),
+	logger = require('morgan'),
 	go = require('../globalObject'),
 	config = require('../config'),
 	access = require('../util/access'),
